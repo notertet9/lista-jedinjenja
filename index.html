@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hemijska jedinjenja</title>
+    <style>
+        body { font-family: Arial; padding: 20px; background: #eef; }
+        input, button { margin: 5px; padding: 8px; width: 250px; }
+        table { margin-top: 20px; border-collapse: collapse; width: 600px; background: white; }
+        th, td { border: 1px solid #999; padding: 8px; text-align: center; }
+        th { background: #ccc; }
+    </style>
+</head>
+<body>
+    <h2>Dodaj jedinjenje</h2>
+    <form method="POST">
+        <input name="naziv" placeholder="Naziv jedinjenja"><br>
+        <input name="formula" placeholder="Formula"><br>
+        <input name="drugi" placeholder="Drugi naziv (opciono)"><br>
+        <button type="submit">Dodaj</button>
+    </form>
+
+    <table>
+        <thead><tr><th>Naziv</th><th>Formula</th><th>Drugi naziv</th></tr></thead>
+        <tbody>
+            {% for j in jedinjenja %}
+            <tr>
+                <td>{{ j.naziv }}</td>
+                <td>{{ j.formula }}</td>
+                <td>{{ j.drugi_naziv or "-" }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
